@@ -7,6 +7,7 @@ specifiers:
   '@nestjs/common': ^9.0.0
   '@nestjs/config': ^2.3.1
   '@nestjs/core': ^9.0.0
+  '@nestjs/mapped-types': ^1.2.2
   '@nestjs/microservices': ^9.3.8
   '@nestjs/platform-express': ^9.0.0
   '@nestjs/schematics': ^9.0.0
@@ -52,6 +53,7 @@ dependencies:
   '@nestjs/common': 9.3.8_welcnyot5bzd5wa2aovbkxpi4i
   '@nestjs/config': 2.3.1_6sysrfnceog466mrogtvxnbmxe
   '@nestjs/core': 9.3.8_iuidzakscyqqzgxw4xz5lr4ijq
+  '@nestjs/mapped-types': 1.2.2_sf6mjpfx2bxuyqvfxh2ti3e5cq
   '@nestjs/microservices': 9.3.8_ta7ut5trbjsdggefuap6imlngu
   '@nestjs/platform-express': 9.3.8_znlpu2ktzydjx7rl4llynpumdm
   '@nestjs/swagger': 6.2.1_ydfrcawl5wcdik4dgpzikzb6by

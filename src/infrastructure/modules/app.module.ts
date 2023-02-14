@@ -3,9 +3,8 @@ import { ConfigModule } from '@nestjs/config'
 
 import { environments, config, JoiValidationSchema } from '../config'
 
-import { AppController } from '../controllers/app.controller'
-import { AppService } from '../services/app.service'
 import { GlobalMiddleware } from '../middlewares/global.middleware'
+import { AuthsModule } from './auths.module'
 
 // Modules
 
@@ -17,9 +16,10 @@ import { GlobalMiddleware } from '../middlewares/global.middleware'
       validationSchema: JoiValidationSchema,
       isGlobal: true,
     }),
+    AuthsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

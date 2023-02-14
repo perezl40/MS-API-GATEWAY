@@ -5,8 +5,8 @@ import * as compression from 'compression'
 import helmet from 'helmet'
 import * as cookieParser from 'cookie-parser'
 
-import { AppModule } from '../modules/app.module'
 import { LoggerValidation } from './joi.validation'
+import { AppModule, AuthsModule } from '../modules'
 
 export function configApp(app: INestApplication, configService: ConfigService) {
   const cors = configService.get('AppConfiguration.corsOrigins')
@@ -40,7 +40,7 @@ export function configSwagger(app: INestApplication) {
       .setVersion('1.0')
       .build()
     const document = SwaggerModule.createDocument(app, configS, {
-      include: [AppModule],
+      include: [AppModule, AuthsModule],
     })
     SwaggerModule.setup('api/docs', app, document)
   }
