@@ -15,7 +15,8 @@ export const JoiValidationSchema = Joi.object({
 
 export const LoggerValidation = (objEnv: any, parent = ''): void => {
   for (const prop in objEnv) {
-    const key = `${parent ? `${parent}.` : ``}${prop}`
+    const isParent = parent ? `${parent}.` : ''
+    const key = `${isParent}${prop}`
     const value = objEnv[prop]
 
     if (typeof value === 'object' && !Array.isArray(value)) {

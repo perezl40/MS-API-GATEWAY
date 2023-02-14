@@ -10,6 +10,8 @@ La pasarela de la API gestiona las solicitudes de dos maneras. Algunas solicitud
 
 ## Requisitos
 
+Tener instalado:
+
 ##### 1 - NestJS
 
 ##### 2 - Pnpm

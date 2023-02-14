@@ -6,7 +6,7 @@ import helmet from 'helmet'
 import * as cookieParser from 'cookie-parser'
 
 import { LoggerValidation } from './joi.validation'
-import { AppModule, AuthsModule } from '../modules'
+import { AuthsModule } from '../modules'
 
 export function configApp(app: INestApplication, configService: ConfigService) {
   const cors = configService.get('AppConfiguration.corsOrigins')
@@ -40,7 +40,7 @@ export function configSwagger(app: INestApplication) {
       .setVersion('1.0')
       .build()
     const document = SwaggerModule.createDocument(app, configS, {
-      include: [AppModule, AuthsModule],
+      include: [AuthsModule],
     })
     SwaggerModule.setup('api/docs', app, document)
   }

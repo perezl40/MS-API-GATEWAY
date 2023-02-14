@@ -2,23 +2,26 @@ import { Injectable, Inject } from '@nestjs/common'
 import { ClientGrpc } from '@nestjs/microservices'
 import { firstValueFrom } from 'rxjs'
 
-import { LoginRequestDto, LoginResponseDto } from 'src/domain/dtos/auth'
-import { IauthService } from 'src/domain/services/auth/iauth.service'
-
+import { LoginRequestDto, LoginResponseDto } from '../../domain/dtos/auth'
+import { IauthService } from '../../domain/services/auth/iauth.service'
+import { AuthServiceClient, AUTH_SERVICE_NAME } from '../proto/auth.pb'
 @Injectable()
 export class AuthsService implements IauthService {
-  ccmsLogin(loginRequestDto: LoginRequestDto): Promise<LoginResponseDto> {
-    const userResponseDto: LoginResponseDto = {
-      idccms: 111111,
-      username: loginRequestDto.username,
-      name: 'name',
-      charge: 'charge',
-      rol: 'rol',
-      photo: 'photo',
-      token: loginRequestDto.accessToken,
-    }
-    return Promise.resolve(userResponseDto)
+  private _authServiceGrpc: AuthServiceClient
+
+  constructor(
+    @Inject(AUTH_SERVICE_NAME) private readonly _client: ClientGrpc,
+  ) {}
+
+  public onModuleInit(): void {
+    this._authServiceGrpc =
+      this._client.getService<AuthServiceClient>(AUTH_SERVICE_NAME)
   }
+
+  ccmsLogin(loginRequestDto: LoginRequestDto): Promise<LoginResponseDto> {
+    return firstValueFrom(this._authServiceGrpc.ccmsLogin(loginRequestDto))
+  }
+
   validateToken(): Promise<any> {
     throw new Error('Method not implemented.')
   }
