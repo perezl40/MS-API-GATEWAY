@@ -29,6 +29,7 @@ specifiers:
   eslint-config-prettier: ^8.3.0
   eslint-plugin-prettier: ^4.0.0
   express: ^4.18.2
+  grpc-ms-proto: github:perezl40/grpc-ms-proto
   helmet: ^6.0.1
   jest: 28.1.2
   joi: ^17.7.1
@@ -63,6 +64,7 @@ dependencies:
   cookie-parser: 1.4.6
   csurf: 1.11.0
   express: 4.18.2
+  grpc-ms-proto: github.com/perezl40/grpc-ms-proto/9b962c7b6c6e1270bca2c0848e80cbcf70ce1209
   helmet: 6.0.1
   joi: 17.7.1
   reflect-metadata: 0.1.13
@@ -5443,3 +5445,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  github.com/perezl40/grpc-ms-proto/9b962c7b6c6e1270bca2c0848e80cbcf70ce1209:
+    resolution: {tarball: https://codeload.github.com/perezl40/grpc-ms-proto/tar.gz/9b962c7b6c6e1270bca2c0848e80cbcf70ce1209}
+    name: grpc-ms-proto
+    version: 1.0.0
+    dev: false
