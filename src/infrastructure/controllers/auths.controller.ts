@@ -15,7 +15,9 @@ export class AuthsController {
     description: 'OK Response',
     type: LoginResponseDto,
   })
-  create(@Body() loginRequestDto: LoginRequestDto) {
+  ccmslogin(
+    @Body() loginRequestDto: LoginRequestDto,
+  ): Promise<LoginResponseDto> {
     return this._ccmsLoginPorts.handle(loginRequestDto)
   }
 }

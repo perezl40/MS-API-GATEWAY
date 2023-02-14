@@ -9,17 +9,17 @@ export const protobufPackage = "auth";
 /** CcmsLogin */
 export interface CcmsLoginRequest {
   accessToken: string;
-  username: string;
+  username?: string | undefined;
 }
 
 export interface CcmsLoginResponse {
-  idccms: number;
-  username: string;
-  name: string;
-  charge: string;
-  rol: string;
-  photo: string;
-  token: string;
+  idccms?: number | undefined;
+  username?: string | undefined;
+  name?: string | undefined;
+  charge?: string | undefined;
+  rol?: string | undefined;
+  photo?: string | undefined;
+  token?: string | undefined;
 }
 
 export const AUTH_PACKAGE_NAME = "auth";

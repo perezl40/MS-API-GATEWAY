@@ -1,4 +1,4 @@
-import { INestApplication, ValidationPipe, Logger } from '@nestjs/common'
+import { INestApplication, ValidationPipe } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import * as compression from 'compression'
