@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Headers } from '@nestjs/common'
+import { Controller, Post, Body } from '@nestjs/common'
 import { ApiTags, ApiResponse } from '@nestjs/swagger'
 
 import { LoginRequestDto, LoginResponseDto } from '../../domain/dtos/auth'
@@ -15,7 +15,7 @@ export class AuthsController {
     description: 'OK Response',
     type: LoginResponseDto,
   })
-  ccmslogin(
+  async ccmslogin(
     @Body() loginRequestDto: LoginRequestDto,
   ): Promise<LoginResponseDto> {
     return this._ccmsLoginPorts.handle(loginRequestDto)

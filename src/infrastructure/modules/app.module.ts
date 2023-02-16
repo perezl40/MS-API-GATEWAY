@@ -7,11 +7,10 @@ import { GlobalMiddleware } from '../middlewares/global.middleware'
 
 // Modules
 import { AuthsModule } from './auths.module'
-
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: environments[process.env.NODE_ENV] || environments.dev,
+      envFilePath: environments[process.env.NODE_ENV],
       load: [config],
       validationSchema: JoiValidationSchema,
       isGlobal: true,

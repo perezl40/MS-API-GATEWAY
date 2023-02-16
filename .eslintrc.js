@@ -28,7 +28,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': RULES_STATUS.OFF,
     '@typescript-eslint/no-explicit-any': RULES_STATUS.OFF,
     'no-var': RULES_STATUS.ERROR,
-    'capitalized-comments': RULES_STATUS.ERROR,
-    'no-console': RULES_STATUS.ERROR,
+    'capitalized-comments': RULES_STATUS.WARN,
+    'no-console': RULES_STATUS.WARN,
   },
 }

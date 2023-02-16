@@ -64,7 +64,7 @@ dependencies:
   cookie-parser: 1.4.6
   csurf: 1.11.0
   express: 4.18.2
-  grpc-ms-proto: github.com/perezl40/grpc-ms-proto/57572056c8543c073819a1f4e9fbec34e243ee97
+  grpc-ms-proto: github.com/perezl40/grpc-ms-proto/6f58705c26ff4b74d386837c760bc1a3d54bb8f7
   helmet: 6.0.1
   joi: 17.7.1
   reflect-metadata: 0.1.13
@@ -5446,8 +5446,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/perezl40/grpc-ms-proto/57572056c8543c073819a1f4e9fbec34e243ee97:
-    resolution: {tarball: https://codeload.github.com/perezl40/grpc-ms-proto/tar.gz/57572056c8543c073819a1f4e9fbec34e243ee97}
+  github.com/perezl40/grpc-ms-proto/6f58705c26ff4b74d386837c760bc1a3d54bb8f7:
+    resolution: {tarball: https://codeload.github.com/perezl40/grpc-ms-proto/tar.gz/6f58705c26ff4b74d386837c760bc1a3d54bb8f7}
     name: grpc-ms-proto
     version: 1.0.0
     dev: false

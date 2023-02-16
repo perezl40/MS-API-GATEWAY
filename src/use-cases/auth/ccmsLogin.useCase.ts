@@ -9,6 +9,6 @@ export class CCMSLoginUseCase implements IccmsLoginPorts {
   constructor(private readonly _authsService: IauthService) {}
 
   async handle(loginRequestDto: LoginRequestDto): Promise<LoginResponseDto> {
-    return await this._authsService.ccmsLogin(loginRequestDto)
+    return this._authsService.ccmsLogin(loginRequestDto)
   }
 }

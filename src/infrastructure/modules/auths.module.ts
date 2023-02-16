@@ -1,5 +1,6 @@
-import { Module } from '@nestjs/common'
+import { Module, Global } from '@nestjs/common'
 import { ClientsModule, Transport } from '@nestjs/microservices'
+import { APP_FILTER } from '@nestjs/core'
 
 // Service
 import { AuthsService } from '../services/auths.service'
@@ -14,19 +15,26 @@ import { CCMSLoginUseCase } from '../../use-cases/auth/ccmsLogin.useCase'
 import { IccmsLoginPorts } from '../../domain/ports/auth'
 import { IauthService } from '../../domain/services/auth/iauth.service'
 import { AUTH_SERVICE_NAME, AUTH_PACKAGE_NAME } from '../proto/auth.pb'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import { HttpExceptionFilter } from '../filters/global-exception.filter'
 
+@Global()
 @Module({
   controllers: [AuthsController],
   imports: [
-    ClientsModule.register([
+    ClientsModule.registerAsync([
       {
         name: AUTH_SERVICE_NAME,
-        transport: Transport.GRPC,
-        options: {
-          url: process.env.MS_AUTH_URL,
-          package: AUTH_PACKAGE_NAME,
-          protoPath: 'node_modules/grpc-ms-proto/proto/auth.proto',
-        },
+        imports: [ConfigModule],
+        useFactory: async (configService: ConfigService) => ({
+          transport: Transport.GRPC,
+          options: {
+            url: configService.get<string>('AppConfiguration.msAuth.url'),
+            package: AUTH_PACKAGE_NAME,
+            protoPath: 'node_modules/grpc-ms-proto/proto/auth.proto',
+          },
+        }),
+        inject: [ConfigService],
       },
     ]),
   ],
@@ -38,6 +46,10 @@ import { AUTH_SERVICE_NAME, AUTH_PACKAGE_NAME } from '../proto/auth.pb'
     {
       provide: IccmsLoginPorts,
       useClass: CCMSLoginUseCase,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
     },
   ],
   exports: [IccmsLoginPorts, IauthService],
