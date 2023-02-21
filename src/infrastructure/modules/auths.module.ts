@@ -1,6 +1,5 @@
 import { Module, Global } from '@nestjs/common'
 import { ClientsModule, Transport } from '@nestjs/microservices'
-import { APP_FILTER } from '@nestjs/core'
 
 // Service
 import { AuthsService } from '../services/auths.service'
@@ -16,7 +15,6 @@ import { IccmsLoginPorts } from '../../domain/ports/auth'
 import { IauthService } from '../../domain/services/auth/iauth.service'
 import { AUTH_SERVICE_NAME, AUTH_PACKAGE_NAME } from '../proto/auth.pb'
 import { ConfigModule, ConfigService } from '@nestjs/config'
-import { HttpExceptionFilter } from '../filters/global-exception.filter'
 
 @Global()
 @Module({
@@ -46,10 +44,6 @@ import { HttpExceptionFilter } from '../filters/global-exception.filter'
     {
       provide: IccmsLoginPorts,
       useClass: CCMSLoginUseCase,
-    },
-    {
-      provide: APP_FILTER,
-      useClass: HttpExceptionFilter,
     },
   ],
   exports: [IccmsLoginPorts, IauthService],

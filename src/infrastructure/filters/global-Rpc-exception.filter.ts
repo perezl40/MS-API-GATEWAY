@@ -15,7 +15,7 @@ import {
 } from '../../domain/interfaces/errors/Ierrors'
 
 @Catch(RpcException)
-export class HttpExceptionFilter implements ExceptionFilter {
+export class GrpcExceptionFilter implements ExceptionFilter {
   catch(exception: RpcException, host: ArgumentsHost) {
     const err = exception.getError()
     let _exception: CustomException<string>
@@ -28,12 +28,10 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     const ctx = host.switchToHttp()
     const response = ctx.getResponse<Response>()
-
     const mapper = new ErrorStatusMapper()
     const status = mapper.grpcToHttpMapper(_exception.code)
     const type = HttpStatus[status]
     const req: Request = ctx.getRequest<Request>()
-
     if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
       Logger.error(`${req.url}`, req.method)
       Logger.error(

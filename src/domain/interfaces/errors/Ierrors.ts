@@ -1,4 +1,4 @@
-import { Metadata, status } from '@grpc/grpc-js'
+import { status } from '@grpc/grpc-js'
 
 export interface CustomExceptionDetails {
   type: string
@@ -8,5 +8,4 @@ export interface CustomExceptionDetails {
 export interface CustomException<T> {
   code: status
   details: T
-  metadata: Metadata
 }

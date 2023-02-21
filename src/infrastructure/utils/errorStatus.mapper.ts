@@ -9,7 +9,7 @@ export class ErrorStatusMapper {
       [Status.OK]: HttpStatus.OK,
       [Status.CANCELLED]: HttpStatus.METHOD_NOT_ALLOWED,
       [Status.UNKNOWN]: HttpStatus.BAD_GATEWAY,
-      [Status.INVALID_ARGUMENT]: HttpStatus.UNPROCESSABLE_ENTITY,
+      [Status.INVALID_ARGUMENT]: HttpStatus.BAD_REQUEST,
       [Status.DEADLINE_EXCEEDED]: HttpStatus.REQUEST_TIMEOUT,
       [Status.NOT_FOUND]: HttpStatus.NOT_FOUND,
       [Status.ALREADY_EXISTS]: HttpStatus.CONFLICT,

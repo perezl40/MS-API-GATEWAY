@@ -24,6 +24,7 @@ export function configApp(app: INestApplication, configService: ConfigService) {
   app.getHttpAdapter().getInstance().disable('x-powered-by')
   app.getHttpAdapter().getInstance().disable('X-Powered-By')
   app.use(compression())
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,

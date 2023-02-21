@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, InternalServerErrorException } from '@nestjs/common'
 
 import { LoginRequestDto, LoginResponseDto } from '../../domain/dtos/auth'
 import { IccmsLoginPorts } from '../../domain/ports/auth'

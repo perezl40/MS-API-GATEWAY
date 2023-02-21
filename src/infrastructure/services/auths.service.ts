@@ -29,6 +29,7 @@ export class AuthsService implements IauthService, OnModuleInit {
       const response = await firstValueFrom(
         this._authServiceGrpc.ccmsLogin(loginRequestDto),
       )
+      // throw new InternalServerErrorException()
       return response
     } catch (error) {
       throw new RpcException(error)
