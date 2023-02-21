@@ -1,13 +1,13 @@
-import {
-  Injectable,
-  Inject,
-  OnModuleInit,
-  InternalServerErrorException,
-} from '@nestjs/common'
+import { Injectable, Inject, OnModuleInit } from '@nestjs/common'
 import { ClientGrpc, RpcException } from '@nestjs/microservices'
 import { firstValueFrom } from 'rxjs'
 
-import { LoginRequestDto, LoginResponseDto } from '../../domain/dtos/auth'
+import {
+  LoginRequestDto,
+  LoginResponseDto,
+  ValidateTokenReqDto,
+  ValidateTokenRespDto,
+} from '../../domain/dtos/auth'
 import { IauthService } from '../../domain/services/auth/iauth.service'
 import { AuthServiceClient, AUTH_SERVICE_NAME } from '../proto/auth.pb'
 @Injectable()
@@ -29,7 +29,21 @@ export class AuthsService implements IauthService, OnModuleInit {
       const response = await firstValueFrom(
         this._authServiceGrpc.ccmsLogin(loginRequestDto),
       )
-      // throw new InternalServerErrorException()
+      return response
+    } catch (error) {
+      throw new RpcException(error)
+    }
+  }
+
+  async validateToken(
+    validateTokenReqDto: ValidateTokenReqDto,
+  ): Promise<ValidateTokenRespDto> {
+    try {
+      const response = await firstValueFrom(
+        this._authServiceGrpc.validateToken({
+          token: validateTokenReqDto.autorization,
+        }),
+      )
       return response
     } catch (error) {
       throw new RpcException(error)

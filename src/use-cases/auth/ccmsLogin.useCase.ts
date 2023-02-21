@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 
 import { LoginRequestDto, LoginResponseDto } from '../../domain/dtos/auth'
 import { IccmsLoginPorts } from '../../domain/ports/auth'
@@ -9,6 +9,7 @@ export class CCMSLoginUseCase implements IccmsLoginPorts {
   constructor(private readonly _authsService: IauthService) {}
 
   async handle(loginRequestDto: LoginRequestDto): Promise<LoginResponseDto> {
+    console.log(this._authsService)
     return this._authsService.ccmsLogin(loginRequestDto)
   }
 }

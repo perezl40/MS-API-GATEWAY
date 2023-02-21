@@ -8,10 +8,10 @@ import { AuthsService } from '../services/auths.service'
 import { AuthsController } from '../controllers/auths.controller'
 
 // UseCase
-import { CCMSLoginUseCase } from '../../use-cases/auth/ccmsLogin.useCase'
+import { CCMSLoginUseCase, ValidateTokeUseCase } from '../../use-cases/auth'
 
 // Interface
-import { IccmsLoginPorts } from '../../domain/ports/auth'
+import { IccmsLoginPorts, IvalidateTokenPorts } from '../../domain/ports/auth'
 import { IauthService } from '../../domain/services/auth/iauth.service'
 import { AUTH_SERVICE_NAME, AUTH_PACKAGE_NAME } from '../proto/auth.pb'
 import { ConfigModule, ConfigService } from '@nestjs/config'
@@ -45,7 +45,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
       provide: IccmsLoginPorts,
       useClass: CCMSLoginUseCase,
     },
+    {
+      provide: IvalidateTokenPorts,
+      useClass: ValidateTokeUseCase,
+    },
   ],
-  exports: [IccmsLoginPorts, IauthService],
+  exports: [IccmsLoginPorts, IvalidateTokenPorts, IauthService],
 })
 export class AuthsModule {}
