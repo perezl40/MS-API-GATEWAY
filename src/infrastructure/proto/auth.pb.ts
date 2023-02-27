@@ -13,6 +13,11 @@ export interface CcmsLoginRequest {
 }
 
 export interface CcmsLoginResponse {
+  login: LoginResponse | undefined;
+  campaigns: CampaignsResponse[] | undefined;
+}
+
+export interface LoginResponse {
   idccms?: number | undefined;
   username?: string | undefined;
   name?: string | undefined;
@@ -20,6 +25,14 @@ export interface CcmsLoginResponse {
   rol?: string | undefined;
   photo?: string | undefined;
   token?: string | undefined;
+}
+
+export interface CampaignsResponse {
+  id?: number | undefined;
+  campaign?: string | undefined;
+  powerBiName?: string | undefined;
+  powerBiURL?: string | undefined;
+  reportPowerBi?: string | undefined;
 }
 
 export interface ValidateTokenRequest {

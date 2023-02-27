@@ -9,7 +9,6 @@ export class CCMSLoginUseCase implements IccmsLoginPorts {
   constructor(private readonly _authsService: IauthService) {}
 
   async handle(loginRequestDto: LoginRequestDto): Promise<LoginResponseDto> {
-    console.log(this._authsService)
     return this._authsService.ccmsLogin(loginRequestDto)
   }
 }

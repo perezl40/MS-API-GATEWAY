@@ -1,62 +1,35 @@
-import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty, IsString, IsOptional } from 'class-validator'
 
+
+class CampaignsDto{
+  id?: number
+  campaign?: string
+  powerBiName?: string
+  powerBiURL?: string
+  reportPowerBi?: string
+}
+
+class LoginDto{
+  idccms?: number
+  username?: string
+  name?: string
+  charge?: string
+  rol?: string
+  photo?: string
+  token?: string
+}
+
 export class LoginRequestDto {
-  @ApiProperty({
-    required: true,
-  })
   @IsNotEmpty()
   @IsString()
   readonly accessToken: string
 
-  @ApiProperty({
-    required: false,
-  })
   @IsOptional()
   @IsString()
-  readonly username?: string
+  readonly username: string
 }
 
 export class LoginResponseDto {
-  @ApiProperty({
-    description: '',
-    required: false,
-  })
-  idccms?: number
-
-  @ApiProperty({
-    description: '',
-    required: false,
-  })
-  username?: string
-
-  @ApiProperty({
-    description: '',
-    required: false,
-  })
-  name?: string
-
-  @ApiProperty({
-    description: '',
-    required: false,
-  })
-  charge?: string
-
-  @ApiProperty({
-    description: '',
-    required: false,
-  })
-  rol?: string
-
-  @ApiProperty({
-    description: '',
-    required: false,
-  })
-  photo?: string
-
-  @ApiProperty({
-    description: '',
-    required: false,
-  })
-  token?: string
+  login?: LoginDto
+  campaigns?: CampaignsDto[]
 }
