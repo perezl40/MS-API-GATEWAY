@@ -14,7 +14,7 @@ export interface CcmsLoginRequest {
 
 export interface CcmsLoginResponse {
   login: LoginResponse | undefined;
-  campaigns: CampaignsResponse[] | undefined;
+  campaigns: CampaignsResponse | undefined;
 }
 
 export interface LoginResponse {
@@ -33,6 +33,7 @@ export interface CampaignsResponse {
   powerBiName?: string | undefined;
   powerBiURL?: string | undefined;
   reportPowerBi?: string | undefined;
+  market?: string | undefined;
 }
 
 export interface ValidateTokenRequest {
